@@ -3,6 +3,8 @@
 //
 
 #include <sys/ptrace.h>
+#include <cerrno>
+#include <iostream>
 #include "../Include/Breakpoint.h"
 
 TinyDBG::Breakpoint::Breakpoint(const pid_t pid, std::intptr_t address) : pid_{pid}, address{address}, enabled{false},

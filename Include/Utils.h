@@ -5,10 +5,12 @@
 #ifndef DEBUGGER_UTILS_H
 #define DEBUGGER_UTILS_H
 
+#include <array>
 #include <vector>
 #include "ProgramInfo.h"
 
-namespace TinyDBG {
+namespace TinyDBG::Utils {
+
     void RegisterTrace();
 
     void ExecuteProgram(const ProgramInfo &programInfo);

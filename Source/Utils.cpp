@@ -8,9 +8,9 @@
 #include <algorithm>
 #include "../Include/Utils.h"
 
-void TinyDBG::RegisterTrace() { ptrace(PTRACE_TRACEME, 0, nullptr, nullptr); }
+void TinyDBG::Utils::RegisterTrace() { ptrace(PTRACE_TRACEME, 0, nullptr, nullptr); }
 
-void TinyDBG::ExecuteProgram(const TinyDBG::ProgramInfo &programInfo) {
+void TinyDBG::Utils::ExecuteProgram(const TinyDBG::ProgramInfo &programInfo) {
     char *argumentsAsCStrings[programInfo.arguments_n + 2];
     char *programName = const_cast<char *>(programInfo.name.c_str());
     argumentsAsCStrings[0] = programName;
@@ -21,7 +21,7 @@ void TinyDBG::ExecuteProgram(const TinyDBG::ProgramInfo &programInfo) {
     execv(programName, argumentsAsCStrings);
 }
 
-std::string TinyDBG::ReadLineFromStdin() {
+std::string TinyDBG::Utils::ReadLineFromStdin() {
     char input[64] = {0};
     for (size_t i = 0U; i != 64U and !std::cin.eof(); ++i) {
         std::cin >> std::noskipws >> input[i];
@@ -33,7 +33,7 @@ std::string TinyDBG::ReadLineFromStdin() {
     return input;
 }
 
-std::vector<std::string> TinyDBG::split(const std::string &string, const char delimiter) {
+std::vector<std::string> TinyDBG::Utils::split(const std::string &string, const char delimiter) {
     std::vector<std::string> res{};
     char *_c_str = const_cast<char *>(string.c_str());
     size_t i = 0;
@@ -53,7 +53,7 @@ std::vector<std::string> TinyDBG::split(const std::string &string, const char de
     return res;
 }
 
-bool TinyDBG::is_prefix(const std::string &s, const std::string &of) {
+bool TinyDBG::Utils::is_prefix(const std::string &s, const std::string &of) {
     if (s.size() > of.size()) return false;
     // TODO(gliontos): Optimize this without copying the strings
     std::string _s{s};

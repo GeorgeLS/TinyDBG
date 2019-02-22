@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include "Breakpoint.h"
 #include "ProgramInfo.h"
+#include "Utils.h"
 
 namespace TinyDBG {
     struct Debugger {
@@ -27,6 +28,21 @@ namespace TinyDBG {
         void ContinueExecution();
 
         void SetBreakpointAtAddress(std::intptr_t address);
+
+        void DumpRegisters();
+
+        // For now just read and write 1 word at a time
+        uint64_t inline ReadMemory(uint64_t address);
+
+        void inline WriteMemory(uint64_t address, uint64_t value);
+
+        void StepOverBreakpoint();
+
+        uint64_t inline ReadPC();
+
+        void inline SetPC(uint64_t pc);
+
+        void inline WaitForSignal();
 
         ProgramInfo programInfo_;
         pid_t pid_;

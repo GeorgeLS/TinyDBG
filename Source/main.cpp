@@ -25,8 +25,8 @@ int main(int argc, char **argv) {
     pid_t pid = fork();
     if (pid == 0) {
         // Child process
-        TinyDBG::RegisterTrace();
-        ExecuteProgram(programInfo);
+        TinyDBG::Utils::RegisterTrace();
+        TinyDBG::Utils::ExecuteProgram(programInfo);
     } else if (pid > 0) {
         // parent process
         TinyDBG::Debugger dgb{programInfo, pid};
