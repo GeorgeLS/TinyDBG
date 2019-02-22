@@ -21,12 +21,12 @@ namespace TinyDBG {
 
         void Run();
 
-        void SetBreakpointAtAddress(std::intptr_t address);
-
     private:
         void HandleCommand(const std::string &commandString);
 
         void ContinueExecution();
+
+        void SetBreakpointAtAddress(std::intptr_t address);
 
         ProgramInfo programInfo_;
         pid_t pid_;
